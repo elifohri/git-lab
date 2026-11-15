@@ -9,7 +9,7 @@ def predict(prob, threshold=0.5):
     """Return "attack" if the probability reaches the threshold, else "normal".
     IMPORTANT! A probability exactly equal to the threshold counts as an attack.
     """
-    if prob > threshold:
+    if prob >= threshold:
         return "attack"
     return "normal"
 
@@ -29,7 +29,7 @@ def confusion_matrix(labels, predictions):
 
 
 def precision(cm):
-    flagged = cm["tp"] + cm["fn"]
+    flagged = cm["tp"] + cm["fp"]
     return cm["tp"] / flagged if flagged else 0.0
 
 
